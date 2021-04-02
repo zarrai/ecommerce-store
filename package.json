@@ -1,0 +1,29 @@
+{
+    "name": "ecommerce-store",
+    "version": "1.0.0",
+    "description": "online ecommerce store",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon --watch backend --exec babel-node backend/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zarrai/ecommerce-store.git"
+    },
+    "author": "Zarrai Saif Edine",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/zarrai/ecommerce-store/issues"
+    },
+    "homepage": "https://github.com/zarrai/ecommerce-store#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.13.14",
+        "@babel/core": "^7.13.14",
+        "@babel/node": "^7.13.13",
+        "@babel/preset-env": "^7.13.12",
+        "nodemon": "^2.0.7"
+    }
+}
