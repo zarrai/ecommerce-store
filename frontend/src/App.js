@@ -1,5 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
 
@@ -10,13 +13,14 @@ function App() {
     document.querySelector('.sidebar').classList.remove('open');
   };
   return (
+    <BrowserRouter>
     <div className="grid-container">
     <header className="header">
       <div className="brand">
         <button onClick={openMenu}>
           &#9776;
         </button>
-        <a href="index.html">amazona</a>
+        <Link to="/">Ecommerce Store</Link>
       </div>
       <div className="header-links">
         <a href="cart.html">Cart</a>
@@ -39,75 +43,9 @@ function App() {
     </aside>
     <main className="main">
       <div className="content">
-        <ul className="products">
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
-          <li>
-            <div className="product">
-              <img className="product-image" src="/images/d1.jpg" alt="product" />
-              <div className="product-name">
-                <a href="product.html">Slim Shirt</a>
-              </div>
-              <div className="product-brand">Nike</div>
-              <div className="product-price">$60</div>
-              <div className="product-rating">4.5 Stars (10 Reviews)</div>
-            </div>
-          </li>
+        <Route path="/product/:id" component={ProductScreen}/>
+        <Route path="/" exact={true} component={HomeScreen}/>
 
-        </ul>
       </div>
 
     </main>
@@ -115,6 +53,7 @@ function App() {
       All right reserved.
     </footer>
   </div>
+  </BrowserRouter>
   );
 }
 
