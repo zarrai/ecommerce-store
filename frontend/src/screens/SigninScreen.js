@@ -5,26 +5,26 @@ import { signin } from '../actions/userActions';
 
 const SigninScreen = (props) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const userSignin = useSelector(state => state.userSignin);
-    const { loading, userInfo, error } = userSignin;
-    const dispatch = useDispatch();
-  
-    useEffect(() => {
-      if (userInfo) {
-        props.history.push("/");
-      }
-      return () => {
-        //
-      };
-    }, [userInfo]);
-  
-    const submitHandler = (e) => {
-      e.preventDefault();
-      dispatch(signin(email, password));
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const userSignin = useSelector(state => state.userSignin);
+  const { loading, userInfo, error } = userSignin;
+  const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  useEffect(() => {
+    if (userInfo) {
+      props.history.push(redirect);
     }
+    return () => {
+      //
+    };
+  }, [userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(signin(email, password));
+
+  }
 
     return (
 <div className="form">
@@ -56,7 +56,7 @@ const SigninScreen = (props) => {
           New to our website?
         </li>
         <li>
-          <Link to="/register" className="button secondary text-center" >Create your account</Link>
+        <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
         </li>
       </ul>
     </form>
