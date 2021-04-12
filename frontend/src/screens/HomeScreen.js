@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
@@ -28,12 +28,33 @@ const HomeScreen = (props) => {
     setSortOrder(e.target.value);
     dispatch(listProducts(category, searchKeyword, sortOrder));
   };
-
+  let catlist = [];
+  let unique = [];
+  let cats = () => {
+    {products.map((product) => (
+      catlist.push(product.category)
+    ))}
+    unique = [...new Set(catlist)];
+  }
+cats()
+console.log(unique)
+let history = useHistory() ;
+function handleChange(value) {
+  history.push(`/category/${value}`);
+}
     return (
         <>
            {category && <h2>{category}</h2>}
 
 <ul className="filter">
+<li>
+    Categories{' '}
+    <select name="sortOrder" onChange={event => handleChange(event.target.value)}>
+      {unique.map((cat) => (
+         <option value={cat} key={cat}>{cat}</option>
+    ))}
+    </select>
+  </li>
   <li>
     <form onSubmit={submitHandler}>
       <input

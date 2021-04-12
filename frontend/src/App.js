@@ -26,24 +26,44 @@ function App() {
   const closeMenu = () => {
     document.querySelector('.sidebar').classList.remove('open');
   };
+  const handleLogout = () => {
+    window.localStorage.clear();;
+    window.sessionStorage.clear();
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    window.location.href = '/';
+  }
   return (
     <BrowserRouter>
     <div className="grid-container">
       <header className="header">
         <div className="brand">
           <button onClick={openMenu}>&#9776;</button>
-          <Link to="/">amazona</Link>
+          <Link to="/">E-store</Link>
         </div>
         <div className="header-links">
-          <a href="cart.html">Cart</a>
+          <a href="/cart">Cart</a>
           {userInfo ? (
-            <Link to="/profile">{userInfo.name}</Link>
+            <div className="dropdown">
+            <Link to="">{userInfo.name}</Link>
+            <ul className="dropdown-content">
+                <li>
+                  <Link to="/profile">Profile</Link>
+                  <Link to="/logout" onClick={handleLogout}>Logout</Link>
+                </li>
+              </ul>
+            </div>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}
           {userInfo && userInfo.isAdmin && (
             <div className="dropdown">
-              <a href="#">Admin</a>
+              <a href="#">Administration</a>
               <ul className="dropdown-content">
                 <li>
                   <Link to="/orders">Orders</Link>
