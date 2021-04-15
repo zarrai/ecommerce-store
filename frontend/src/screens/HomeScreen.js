@@ -28,33 +28,33 @@ const HomeScreen = (props) => {
     setSortOrder(e.target.value);
     dispatch(listProducts(category, searchKeyword, sortOrder));
   };
-  let catlist = [];
-  let unique = [];
-  let cats = () => {
-    {products.map((product) => (
-      catlist.push(product.category)
-    ))}
-    unique = [...new Set(catlist)];
-  }
-cats()
-console.log(unique)
-let history = useHistory() ;
-function handleChange(value) {
-  history.push(`/category/${value}`);
-}
+//   let catlist = [];
+//   let unique = [];
+//   let cats = () => {
+//     {products.map((product) => (
+//       catlist.push(product.category)
+//     ))}
+//     unique = [...new Set(catlist)];
+//   }
+// cats()
+// console.log(unique)
+// let history = useHistory() ;
+// function handleChange(value) {
+//   history.push(`/category/${value}`);
+// }
     return (
         <>
            {category && <h2>{category}</h2>}
 
 <ul className="filter">
-<li>
+{/* <li>
     Categories{' '}
     <select name="sortOrder" onChange={event => handleChange(event.target.value)}>
       {unique.map((cat) => (
          <option value={cat} key={cat}>{cat}</option>
     ))}
     </select>
-  </li>
+  </li> */}
   <li>
     <form onSubmit={submitHandler}>
       <input
