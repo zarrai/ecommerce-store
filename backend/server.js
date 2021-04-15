@@ -15,7 +15,12 @@ mongoose.connect(mongodbUrl, {
     useCreateIndex: true
 }).catch(error => console.log(error.reason));
 
-
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/frontend/dist')))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '/frontend/dist', 'index.html'))
+    })
+}
 const app = express();
 app.use(bodyParser.json());
 app.use("/api/users", userRoute);
