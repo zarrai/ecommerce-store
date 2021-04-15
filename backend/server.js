@@ -15,6 +15,7 @@ mongoose.connect(mongodbUrl, {
     useCreateIndex: true
 }).catch(error => console.log(error.reason));
 
+const path = require('path');
 const app = express();
 
 if (process.env.NODE_ENV === 'production') {
