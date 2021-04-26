@@ -1,6 +1,5 @@
 {
     "name": "frontend",
-    "proxy": "http://localhost:${process.env.PORT}",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
