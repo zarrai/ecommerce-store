@@ -1,6 +1,6 @@
 {
     "name": "frontend",
-    "proxy": "https://react-store-ss.herokuapp.com",
+    "proxy": "http://localhost:1598/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
