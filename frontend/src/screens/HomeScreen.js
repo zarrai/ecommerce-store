@@ -77,7 +77,7 @@ const HomeScreen = (props) => {
   <div>Loading...</div>
 ) : error ? (
   <div>{error}</div>
-) : (
+) : ( products ? 
   <ul className="products">
     {products.map((product) => (
       <li key={product._id}>
@@ -104,7 +104,7 @@ const HomeScreen = (props) => {
       </li>
     ))}
   </ul>
-)}
+: null)}
         </>
     )
 }
