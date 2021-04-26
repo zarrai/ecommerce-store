@@ -46,4 +46,4 @@ app.get("/api/config/paypal", (req, res) => {
 //   res.send(data.products);
 // });
 
-app.listen(process.env.PORT, () => { console.log(`Server started at http://localhost:${process.env.PORT}`) });
+app.listen(30969, () => { console.log(`Server started at http://localhost:30969`) });
