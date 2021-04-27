@@ -8,7 +8,7 @@ import orderRoute from './routes/orderRoute';
 
 
 
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL;
 mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -30,7 +30,7 @@ app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
-    res.send(config.PAYPAL_CLIENT_ID);
+    res.send(process.env.PAYPAL_CLIENT_ID);
 })
 
 // app.get("/api/products/:id", (req, res) => {
