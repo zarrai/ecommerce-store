@@ -26,7 +26,7 @@ const listProducts = (
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST });
         const { data } = await axios.get(
-            '/api/products?category=' +
+            `http://localhost:${process.env.PORT}/api/products?category=` +
             category +
             '&searchKeyword=' +
             searchKeyword +
